@@ -1,0 +1,12 @@
+﻿@model OrderManagement_MVC.Models.Order
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+
+
+@Html.Partial("../Partial/_Profile", @Model, new ViewDataDictionary {{"City", "Hamilton"}, {"Province", "ON"}})

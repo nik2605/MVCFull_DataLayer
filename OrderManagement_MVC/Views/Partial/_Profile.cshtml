@@ -1,0 +1,14 @@
+﻿@model OrderManagement_MVC.Models.Order
+
+@{
+    var city = ViewData["City"] != null ? ViewData["City"].ToString() : "Not available";
+}
+
+
+@city
+
+@Model.OrderName
+<div>
+    Hi THis is my website!
+    this is partial page
+</div>

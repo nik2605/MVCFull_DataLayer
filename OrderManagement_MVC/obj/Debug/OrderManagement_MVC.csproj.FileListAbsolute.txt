@@ -83,3 +83,8 @@ C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\bin\Or
 C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\bin\OrderManagement_MVC_Common.dll.config
 C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\bin\OrderManagement_MVC_DataLayer.pdb
 C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\bin\OrderManagement_MVC_DataLayer.dll.config
+C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\obj\Debug\OrderManagement_MVC.Resources.OrderManagement.resources
+C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\obj\Debug\OrderManagement_MVC.csproj.GenerateResource.cache
+C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\bin\fr\OrderManagement_MVC.resources.dll
+C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\obj\Debug\OrderManagement_MVC.Resources.OrderManagement.fr.resources
+C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC\obj\Debug\fr\OrderManagement_MVC.resources.dll

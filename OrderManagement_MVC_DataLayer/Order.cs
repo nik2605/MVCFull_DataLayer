@@ -128,5 +128,12 @@ namespace OrderManagement_MVC_DataLayer
             return orders;
         }
 
+        public List<Order> GetOrdersTemp()
+        {
+            List<Order> orders = new List<Order>();
+
+            return orders;
+        }
+
     }
 }

@@ -1,40 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using OrderManagement_MVC.Mapper;
 using OrderManagement_MVC.Models;
+using OrderManagement_MVC_Common;
 
 namespace OrderManagement_MVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SharedController
     {
         public ActionResult Index(string id)
         {
             Order order = new Order();
+
             if (!string.IsNullOrEmpty(id))
             {
                 OrderManagement_MVC_DataLayer.Order ord = new OrderManagement_MVC_DataLayer.Order();
 
-                var data = ord.GetOrder(id);
+                order = ord.GetOrder(id).Map();
 
-                var temp = ord.GetOrders();
+                var test = ord.GetOrdersTemp();
             }
 
 
-            ViewBag.Nik = "This is test value";
 
-            ViewBag.Nik = "This";
-
-
-
-
-            return View(new Order(){OrderName = "TEST"});
+            return View(order);
         }
 
         public ActionResult About()
         {
+
+           
+
             ViewBag.Message = "Your application description page.";
 
             return View();
@@ -46,5 +50,7 @@ namespace OrderManagement_MVC.Controllers
 
             return View();
         }
+
+       
     }
 }

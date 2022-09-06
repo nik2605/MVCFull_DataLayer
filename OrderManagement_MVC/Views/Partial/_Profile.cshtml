@@ -1,14 +1,17 @@
-﻿@model OrderManagement_MVC.Models.Order
-
-@{
-    var city = ViewData["City"] != null ? ViewData["City"].ToString() : "Not available";
-}
+﻿@using OrderManagement_MVC.Resources
+@model OrderManagement_MVC.Models.Order
 
 
-@city
+<br/>
+<br/>
 
 @Model.OrderName
+
+
+@Html.LabelFor(a=>a.OrderDate)
+
 <div>
-    Hi THis is my website!
-    this is partial page
+    @OrderManagement.greeting <br/>
+    @OrderManagement.greeting1
+    
 </div>

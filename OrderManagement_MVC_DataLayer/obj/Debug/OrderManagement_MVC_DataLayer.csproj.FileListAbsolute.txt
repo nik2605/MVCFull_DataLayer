@@ -56,3 +56,4 @@ C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC_DataLa
 C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC_DataLayer\obj\Debug\OrderManagement_MVC_DataLayer.csproj.CopyComplete
 C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC_DataLayer\obj\Debug\OrderManagement_MVC_DataLayer.dll
 C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC_DataLayer\obj\Debug\OrderManagement_MVC_DataLayer.pdb
+C:\Users\nik.adhaduk\source\repos\OrderManagement_MVC\OrderManagement_MVC_DataLayer\obj\Debug\OrderManagement_MVC_DataLayer.csproj.AssemblyReference.cache

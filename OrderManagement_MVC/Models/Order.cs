@@ -14,7 +14,7 @@ namespace OrderManagement_MVC.Models
 
         public string OrderName { get; set; }
 
-        [Display(Name = "Order Date")]
+        [Display(ResourceType =  typeof(Resources.OrderManagement),Name = "Order_OrderDate_Order_Date")]
         [Required]
         public DateTime OrderDate { get; set; }
         

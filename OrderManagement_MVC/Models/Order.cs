@@ -11,13 +11,13 @@ namespace OrderManagement_MVC.Models
     public class Order
     {
         public Guid OrderId { get; set; }
-
+        [Required]
         public string OrderName { get; set; }
 
         [Display(ResourceType =  typeof(Resources.OrderManagement),Name = "Order_OrderDate_Order_Date")]
         [Required]
         public DateTime OrderDate { get; set; }
-        
+        [Required]
         public Common.OrderStatus OrderStatus { get; set; }
 
         public decimal TotalAmount()

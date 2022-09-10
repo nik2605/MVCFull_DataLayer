@@ -61,6 +61,15 @@ namespace OrderManagement_MVC.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order Management.
         /// </summary>
         public static string AppName {
@@ -84,6 +93,15 @@ namespace OrderManagement_MVC.Resources {
         public static string greeting1 {
             get {
                 return ResourceManager.GetString("greeting1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        public static string Info {
+            get {
+                return ResourceManager.GetString("Info", resourceCulture);
             }
         }
         

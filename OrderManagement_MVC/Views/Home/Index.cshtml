@@ -1,13 +1,150 @@
-﻿@model OrderManagement_MVC.Models.Order
+﻿@using OrderManagement_MVC.Resources
+@model IEnumerable<OrderManagement_MVC.Models.Order>
 
 @{
     ViewBag.Title = "Home Page";
 }
 
 
+@*@Html.Partial("../Partial/_Profile", @Model)*@
+<br />
+<br />
+<br />
+
+<span class="label label-danger">@ViewBag.ErrorMessage</span>
+
+
+@if (Model.Any())
+{
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">@OrderManagement.Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var order in @Model)
+                {
+                    <tr>
+                        <th scope="row">@order.OrderName</th>
+                        <td>@order.OrderDate.ToString("yyyy MMMM dd")</td>
+                        <td>@order.OrderStatus</td>
+                        <td>
+                            <button id="info" onclick="ModelAction('Information',
+    'This is information dialog click on learn more to get extra Info.',
+    'Learn More',
+    this,
+    Info)" data-id="@order.OrderId">
+                                Info
+                            </button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button id="delete" onclick="ModelAction('Delete Conformation',
+    'Are you sure you want to delete?',
+    'Save',
+    this,
+    Delete)" data-id="@order.OrderId">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
 
 
 
+<div class="modal" id="genericModel" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="action" class="btn btn-primary">
+                    <span></span>
+                </button>
+                <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-@Html.Partial("../Partial/_Profile", @Model)
+
+@section scripts
+{
+    <script>
+
+        function ModelAction(title, body, action, event, fn) {
+
+            var model = $("#genericModel");
+
+            $(model).find(".modal-title").text(title);
+            $(model).find(".modal-body").text(body);
+            $(model).find("#action span").text(action);
+
+            $(model).show();
+
+            $(model).find("#close").click(function () {
+
+                $(model).find("#action").unbind('click');
+
+                $(model).hide();
+            });
+
+            $(model).find("#action").click(function () {
+                fn(event, model);
+            });
+
+        }
+
+        var Info = function (event, model) {
+            console.log("Info function Called!!!");
+
+            var id = $(event).data("id");
+
+            $(model).find(".modal-body").text("");
+            $(model).find(".modal-body").append("<p>" + id + " </p><p>This is the id of the order </p>");
+        }
+
+        var Delete = function (event, model) {
+            var id = $(event).data("id");
+            $.ajax({
+                url: "../Home/Delete",
+                type: "DELETE",
+                data: { id: id },
+                success: function (data) {
+                    console.log(data);
+                    $(model).hide();
+                    location.reload();
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    $(model).find(".modal-body").text("");
+                    if (errorMessage === "") {
+                        $(model).find(".modal-body").append(' <p>Internal Server Error! </p> <p> Please try again later or contact the IT department.</p> <p>Thanks!</p>');
+                    } else {
+                        $(model).find(".modal-body").append('Error: ' + errorMessage);
+                    }
+
+                }
+            });
+
+        }
+
+
+    </script>
+}

@@ -1,17 +1,56 @@
 ﻿@using OrderManagement_MVC.Resources
-@model OrderManagement_MVC.Models.Order
+@model IEnumerable<OrderManagement_MVC.Models.Order>
+
+
 
 
 <br/>
 <br/>
+<br/>
 
-@Model.OrderName
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Date</th>
+        <th scope="col">Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">@OrderManagement.Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var order in @Model)
+    {
+        <tr>
+            <th scope="row">@order.OrderId</th>
+            <td>@order.OrderDate.ToString("yyyy MMMM dd")</td>
+            <td>@order.OrderName</td>
+            <td>@order.OrderStatus</td>
+            <td>
+                <button id="info" onclick="" data-id="@order.OrderId">Info</button>
+                &nbsp;&nbsp;&nbsp;
+                <button id="delete" onclick="" data-id="@order.OrderId">Delete</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
 
 
-@Html.LabelFor(a=>a.OrderDate)
 
-<div>
-    @OrderManagement.greeting <br/>
-    @OrderManagement.greeting1
-    
-</div>
+
+
+@*<br/>
+    <br/>
+
+    @Model.OrderName
+
+
+    @Html.LabelFor(a=>a.OrderDate)
+
+    <div>
+        @OrderManagement.greeting <br/>
+        @OrderManagement.greeting1
+
+    </div>*@

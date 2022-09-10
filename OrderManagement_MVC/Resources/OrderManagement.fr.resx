@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>French_Order Management</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="greeting1" xml:space="preserve">
     <value>french_this is partial page</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
   </data>
   <data name="Order_OrderDate_Order_Date" xml:space="preserve">
     <value>Frech_OrderDate</value>

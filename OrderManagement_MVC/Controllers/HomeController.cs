@@ -18,20 +18,17 @@ namespace OrderManagement_MVC.Controllers
     {
         public ActionResult Index(string id)
         {
-            Order order = new Order();
-
-            if (!string.IsNullOrEmpty(id))
+            try
             {
                 OrderManagement_MVC_DataLayer.Order ord = new OrderManagement_MVC_DataLayer.Order();
-
-                order = ord.GetOrder(id).Map();
-
-                var test = ord.GetOrdersTemp();
+               // throw new Exception("Database not available! Please try again later.");
+                return View(ord.GetOrders().Select(a => a.Map()));
             }
-
-
-
-            return View(order);
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View(new List<Order>());
+            }
         }
 
         public ActionResult About()
@@ -51,6 +48,33 @@ namespace OrderManagement_MVC.Controllers
             return View();
         }
 
-       
+        [HttpDelete]
+        public JsonResult Delete(Guid id)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(id.ToString()))
+                {
+                    throw new Exception("Id cannot be null or empty");
+                }
+
+                OrderManagement_MVC_DataLayer.Order ord = new OrderManagement_MVC_DataLayer.Order();
+
+                var order = ord.GetOrder(id.ToString());
+
+                if (order != null && order?.OrderId == Guid.Empty)
+                {
+                    throw new Exception("Order not exist at all!");
+                }
+
+                order?.DeleteOrder(id);
+
+                return Json("All good!");
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+        }
     }
 }

@@ -78,7 +78,27 @@ namespace OrderManagement_MVC_DataLayer
 
         public void DeleteOrder(Guid orderid)
         {
+            SqlConnection connection = new SqlConnection(ConnectionString);
+            var cmd = Transaction != null
+                ? new SqlCommand("DeleteOrder", connection) { CommandType = CommandType.StoredProcedure }
+                : new SqlCommand("DeleteOrder", connection, Transaction) { CommandType = CommandType.StoredProcedure };
 
+            cmd.Parameters.AddWithValue("@OrderId", orderid);
+            
+            connection.Open();
+           
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public Order CreateOrder(Order order)
